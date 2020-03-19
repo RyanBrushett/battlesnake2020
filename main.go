@@ -14,6 +14,10 @@ func main() {
 	http.HandleFunc("/", handlers.Index)
 	http.HandleFunc("/ping", handlers.Ping)
 
+	http.HandleFunc("/start", handlers.Start)
+	http.HandleFunc("/move", handlers.Move)
+	http.HandleFunc("/end", handlers.End)
+
 	fmt.Printf("Starting at http://0.0.0.0:%s", port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }

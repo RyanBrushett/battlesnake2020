@@ -14,12 +14,6 @@ type Game struct {
 	ID string `json:"id"`
 }
 
-// Coordinate refers to a square on a board
-type Coordinate struct {
-	X int `json:"x"`
-	Y int `json:"y"`
-}
-
 // Board does stuff
 type Board struct {
 	Height int          `json:"height"`
@@ -35,14 +29,6 @@ type Snake struct {
 	Health int          `json:"health"`
 	Body   []Coordinate `json:"body"`
 	Shout  string       `json:"shout"`
-}
-
-// ServerRequest has a Game, a Turn, a Board, and a Snake who is 'you'
-type ServerRequest struct {
-	Game  Game  `json:"game"`
-	Turn  int   `json:"turn"`
-	Board Board `json:"board"`
-	You   Snake `json:"you"`
 }
 
 // StartResponse is what we send back once we get a request to start

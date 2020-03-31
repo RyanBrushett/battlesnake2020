@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/RyanBrushett/battlesnake2020/pkg/moves"
 	"github.com/RyanBrushett/battlesnake2020/pkg/structs"
 )
 
@@ -22,7 +21,7 @@ func Ping(w http.ResponseWriter, r *http.Request) {
 // Start method
 func Start(w http.ResponseWriter, r *http.Request) {
 	// What do I do with this.
-	request := structs.ServerRequest{}
+	request := structs.State{}
 	json.NewDecoder(r.Body).Decode(&request)
 
 	startResponse := structs.StartResponse{
@@ -37,10 +36,10 @@ func Start(w http.ResponseWriter, r *http.Request) {
 
 // Move method
 func Move(w http.ResponseWriter, r *http.Request) {
-	request := structs.ServerRequest{}
-	json.NewDecoder(r.Body).Decode(&request)
+	gameState := structs.State{}
+	json.NewDecoder(r.Body).Decode(&gameState)
 
-	move := moves.RandomMove()
+	move := gameState.GetMove()
 
 	moveResponse := structs.MoveResponse{Move: move}
 
